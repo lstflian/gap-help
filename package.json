@@ -1,0 +1,89 @@
+{
+    "name": "gap-help-ext",
+    "displayName": "GAP Help",
+    "description": "Search and read GAP documentation directly in VS Code — powered by the native GAP help system",
+    "version": "0.1.1",
+    "publisher": "flianlee",
+    "license": "SEE LICENSE IN LICENSE",
+    "icon": "icon/icon.png",
+    "categories": ["Education"],
+    "keywords": ["gap", "algebra", "group theory", "help", "documentation", "mathematics"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/flianlee/gap-help-ext"
+    },
+    "engines": {
+        "vscode": "^1.105.0"
+    },
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "gap-help.search",
+                "title": "Help in GAP",
+                "category": "GAP"
+            },
+            {
+                "command": "gap-help.rebuild",
+                "title": "Rebuild Help Index",
+                "category": "GAP"
+            },
+            {
+                "command": "gap-help.openReference",
+                "title": "Open GAP Reference Manual",
+                "category": "GAP"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "gap-help.search",
+                    "when": "resourceExtname == .g || resourceExtname == .gi || resourceExtname == .gd",
+                    "group": "navigation"
+                },
+                {
+                    "command": "gap-help.openReference",
+                    "when": "resourceExtname == .g || resourceExtname == .gi || resourceExtname == .gd",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "GAP Help",
+            "properties": {
+                "gap-help.searchMode": {
+                    "type": "string",
+                    "enum": [
+                        "prefix",
+                        "substring"
+                    ],
+                    "default": "prefix",
+                    "description": "Search mode: prefix = ?topic (match from word start), substring = ??topic (match anywhere)"
+                },
+                "gap-help.helpStyle": {
+                    "type": "string",
+                    "enum": [
+                        "native"
+                    ],
+                    "default": "native",
+                    "description": "Help page rendering style: native = GAP original look (add more options when new CSS themes are added)"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -p ./"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.0",
+        "@types/vscode": "^1.105.0",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "strip-ansi": "^7.2.0"
+    }
+}
