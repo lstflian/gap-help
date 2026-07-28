@@ -1,5 +1,5 @@
 {
-    "name": "gap-help-ext",
+    "name": "gap-help",
     "displayName": "GAP Help",
     "description": "Search and read GAP documentation directly in VS Code — powered by the native GAP help system",
     "version": "0.1.1",
@@ -10,7 +10,7 @@
     "keywords": ["gap", "algebra", "group theory", "help", "documentation", "mathematics"],
     "repository": {
         "type": "git",
-        "url": "https://github.com/flianlee/gap-help-ext"
+        "url": "https://github.com/flianlee/gap-help"
     },
     "engines": {
         "vscode": "^1.105.0"
@@ -61,7 +61,7 @@
                         "substring"
                     ],
                     "default": "prefix",
-                    "description": "Search mode: prefix = ?topic (match from word start), substring = ??topic (match anywhere)"
+                    "description": "Search mode: prefix (?topic) matches from the start of a word, substring (??topic) matches anywhere"
                 },
                 "gap-help.helpStyle": {
                     "type": "string",
@@ -69,7 +69,7 @@
                         "native"
                     ],
                     "default": "native",
-                    "description": "Help page rendering style: native = GAP original look (add more options when new CSS themes are added)"
+                    "description": "Help page rendering style. Currently only 'native' (GAP original look) is available."
                 }
             }
         }
