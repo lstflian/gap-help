@@ -21,7 +21,7 @@ Using GAP 4.16.0 as an example, run the following in PowerShell (replace the pat
 
 ```powershell
 $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
-[Environment]::SetEnvironmentVariable('PATH', $userPath + ';C:\Program Files\GAP-4.16.0\runtime\bin;C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0', 'User')
+[Environment]::SetEnvironmentVariable('PATH', $userPath + ';C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0;C:\Program Files\GAP-4.16.0\runtime\bin', 'User')
 ```
 
 **2. Verify the installation**
