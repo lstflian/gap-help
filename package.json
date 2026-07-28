@@ -10,7 +10,7 @@
     "keywords": ["gap", "algebra", "group theory", "help", "documentation", "mathematics"],
     "repository": {
         "type": "git",
-        "url": "https://github.com/flianlee/gap-help"
+        "url": "https://github.com/lstflian/gap-help"
     },
     "engines": {
         "vscode": "^1.105.0"
