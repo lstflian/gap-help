@@ -1,7 +1,7 @@
 {
     "name": "gap-help",
     "displayName": "GAP Help",
-    "description": "Search and read GAP documentation directly in VS Code — powered by the native GAP help system",
+    "description": "Search and read GAP documentation directly in VS Code, powered by the native GAP help system",
     "version": "0.1.1",
     "publisher": "flianlee",
     "license": "SEE LICENSE IN LICENSE",
@@ -83,7 +83,5 @@
         "@types/vscode": "^1.105.0",
         "typescript": "^5.0.0"
     },
-    "dependencies": {
-        "strip-ansi": "^7.2.0"
-    }
+    "dependencies": {}
 }

@@ -3,8 +3,6 @@
  */
 const fs = require('fs');
 const path = require('path');
-const stripAnsi = require('strip-ansi').default;
-
 const CWD = process.cwd();
 
 function cleanFile(filename, fields, stripDisplay) {
@@ -22,7 +20,7 @@ function cleanFile(filename, fields, stripDisplay) {
         if (parts.length < fields) continue;
 
         let [bookDir, url, display, ...rest] = parts;
-        if (stripDisplay) display = stripAnsi(display).replace(/\s+/g, ' ').trim();
+        if (stripDisplay) display = display.replace(/\x1b\[[0-9;]*m/g, '').replace(/\s+/g, ' ').trim();
         url = url.replace(/^.*?(?=\/(doc\/|pkg\/))/, '');
 
         result.push([bookDir, url, display, ...rest].join('|'));

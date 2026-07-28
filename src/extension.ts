@@ -100,7 +100,7 @@ async function doRebuild(context: vscode.ExtensionContext, dataDir: string, meta
 
     const done = vscode.window.setStatusBarMessage('$(sync~spin) GAP Help: building index…');
     await execAsync(`gap -q --nointeract "${exp}"`, { cwd: dataDir, timeout: 300000 });
-    if (fs.existsSync(conv)) { await execAsync(`node "${conv}"`, { cwd: dataDir }); }
+    if (fs.existsSync(conv)) { runConvertScript(conv, dataDir); }
     if (fs.existsSync(expt)) { await execAsync(`gap -q --nointeract "${expt}"`, { cwd: dataDir, timeout: 60000 }); }
     done.dispose();
 
@@ -180,6 +180,19 @@ function registerCommands(ctx: vscode.ExtensionContext, dataDir: string, metaFil
 /** Returns empty string on error. */
 function safeRead(fp: string): string {
     try { return fs.readFileSync(fp, 'utf-8').trim(); } catch { return ''; }
+}
+
+/** Run convert_export.js */
+function runConvertScript(scriptPath: string, cwd: string): void {
+    const prev = process.cwd();
+    process.chdir(cwd);
+    try {
+        const p = require.resolve(scriptPath);
+        if (p in require.cache) delete require.cache[p];
+        require(p);
+    } finally {
+        process.chdir(prev);
+    }
 }
 
 /** Async exec with promise */

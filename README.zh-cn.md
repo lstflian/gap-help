@@ -1,6 +1,7 @@
 ﻿# GAP Help
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
+[![GAP](https://img.shields.io/badge/GAP-4.13.0+-green)](https://www.gap-system.org/)
 
 [English](README.md) | 简体中文
 
@@ -12,17 +13,22 @@
 
 ## 前置条件
 
-使用本扩展前，请确保已将 GAP 添加到系统 PATH。如果未添加，扩展将无法正常工作。
+本扩展配合 Windows 版 GAP（.exe 安装程序）使用，且要求 GAP 已添加到系统 `PATH`。
 
-下面以 GAP 4.16.0 为例，在 PowerShell 中执行以下命令（请将路径替换为 GAP 的实际安装路径）：
+**1. 添加 GAP 到 `PATH`**
+
+以 GAP 4.16.0 为例，在 PowerShell 中执行（请将路径替换为实际安装路径）：
 
 ```powershell
-[Environment]::SetEnvironmentVariable('PATH', $env:PATH + ';C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0', 'User')
+$userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
+[Environment]::SetEnvironmentVariable('PATH', $userPath + ';C:\Program Files\GAP-4.16.0\runtime\bin;C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0', 'User')
 ```
 
-验证 GAP 是否成功添加，运行：
+**2. 验证安装**
 
-```powershell
+重启终端后运行以下命令，确认 `gap` 已正确添加：
+
+```bash
 gap --version
 ```
 
@@ -70,12 +76,14 @@ gap --version
 
 ## 开发
 
+首先安装依赖并编译 TypeScript 源码：
+
 ```bash
 npm install
 npm run compile
 ```
 
-之后按 F5 即可启动调试。
+之后按 `F5` 即可启动调试。
 
 ## 许可证
 [MIT](LICENSE)

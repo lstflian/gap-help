@@ -1,6 +1,7 @@
 # GAP Help
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
+[![GAP](https://img.shields.io/badge/GAP-4.13.0+-green)](https://www.gap-system.org/)
 
 English | [简体中文](README.zh-cn.md)
 
@@ -12,17 +13,22 @@ Supports word-selection lookup, real-time QuickPick search (matching the behavio
 
 ## Prerequisites
 
-Before using this extension, make sure GAP is added to your system PATH. The extension will not work otherwise.
+This extension works with GAP for Windows (the .exe installer) and requires GAP to be in your system `PATH`.
 
-The following example assumes GAP 4.16.0. Run the command in PowerShell (replace the path with your actual GAP installation path):
+**1. Add GAP to `PATH`**
+
+Using GAP 4.16.0 as an example, run the following in PowerShell (replace the path with your actual installation path):
 
 ```powershell
-[Environment]::SetEnvironmentVariable('PATH', $env:PATH + ';C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0', 'User')
+$userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
+[Environment]::SetEnvironmentVariable('PATH', $userPath + ';C:\Program Files\GAP-4.16.0\runtime\bin;C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0', 'User')
 ```
 
-To verify GAP is correctly added, run:
+**2. Verify the installation**
 
-```powershell
+After restarting your terminal, run the following command to confirm `gap` is correctly added:
+
+```bash
 gap --version
 ```
 
@@ -70,12 +76,14 @@ Open the GAP Reference Manual from the context menu. Click any link within the w
 
 ## Development
 
+First install dependencies and compile the TypeScript sources:
+
 ```bash
 npm install
 npm run compile
 ```
 
-Then press F5 to launch the extension in debug mode.
+Then press `F5` to launch debugging.
 
 ## License
 
