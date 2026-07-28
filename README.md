@@ -20,6 +20,12 @@ The following example assumes GAP 4.16.0. Run the command in PowerShell (replace
 [Environment]::SetEnvironmentVariable('PATH', $env:PATH + ';C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0', 'User')
 ```
 
+To verify GAP is correctly added, run:
+
+```powershell
+gap --version
+```
+
 ## Features
 
 - On first activation, the extension automatically generates the help index. You can manually rebuild it later by pressing `Ctrl+Shift+P` and typing `GAP: Rebuild Help Index`.
@@ -61,6 +67,15 @@ You can also search first and filter by book afterwards.
 Open the GAP Reference Manual from the context menu. Click any link within the webview panel to navigate between pages.
 
 <img src="images/GAPRef.gif" alt="Reference manual demo" width="800" />
+
+## Development
+
+```bash
+npm install
+npm run compile
+```
+
+Then press F5 to launch the extension in debug mode.
 
 ## License
 

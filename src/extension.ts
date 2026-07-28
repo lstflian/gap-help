@@ -79,7 +79,7 @@ export async function activate(context: vscode.ExtensionContext) {
     }
 
     if (!allEntries.length) {
-        vscode.window.showWarningMessage('GAP Help: No index. Use "GAP: Rebuild Help Index".');
+        vscode.window.showWarningMessage('GAP Help: Help index not found. Run "GAP: Rebuild Help Index" to generate it.');
     }
 
     // Step 4. Register commands
@@ -124,7 +124,7 @@ function registerCommands(ctx: vscode.ExtensionContext, dataDir: string, metaFil
     // Search
     ctx.subscriptions.push(vscode.commands.registerCommand('gap-help.search', async () => {
         const seed = getSelectedWord() || '';
-        if (!allEntries.length) { vscode.window.showWarningMessage('GAP Help: Index not loaded.'); return; }
+        if (!allEntries.length) { vscode.window.showWarningMessage('GAP Help: Search unavailable — help index not loaded. Run "GAP: Rebuild Help Index" first.'); return; }
 
         const cfg = vscode.workspace.getConfiguration('gap-help');
         const fromBegin = cfg.get<string>('searchMode') === 'prefix';
@@ -137,7 +137,7 @@ function registerCommands(ctx: vscode.ExtensionContext, dataDir: string, metaFil
 
     // Open GAP Reference Manual 
     ctx.subscriptions.push(vscode.commands.registerCommand('gap-help.openReference', () => {
-        if (!gapRoot) { vscode.window.showWarningMessage('GAP Help: GAP installation not found.'); return; }
+        if (!gapRoot) { vscode.window.showWarningMessage('GAP Help: GAP not detected. Make sure GAP is in your system PATH.'); return; }
         const mj = path.join(gapRoot, 'doc', 'ref', 'chap0_mj.html');
         const plain = path.join(gapRoot, 'doc', 'ref', 'chap0.html');
         const file = fs.existsSync(mj) ? mj : plain;

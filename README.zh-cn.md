@@ -20,6 +20,12 @@
 [Environment]::SetEnvironmentVariable('PATH', $env:PATH + ';C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0', 'User')
 ```
 
+验证 GAP 是否成功添加，运行：
+
+```powershell
+gap --version
+```
+
 ## 功能说明
 
 - 扩展首次激活时自动生成帮助索引文件，后续可通过 `Ctrl+Shift+P` 输入 `GAP: Rebuild Help Index` 手动重建。
@@ -61,6 +67,15 @@
 右键菜单可直接打开 GAP Reference Manual，Webview 面板内点击链接可在页面间跳转。
 
 <img src="images/GAPRef.gif" alt="参考手册演示" width="800" />
+
+## 开发
+
+```bash
+npm install
+npm run compile
+```
+
+之后按 F5 即可启动调试。
 
 ## 许可证
 [MIT](LICENSE)
