@@ -12,7 +12,7 @@ import { simpleString } from './simpleString';
 // Types
 
 export interface HelpEntry {
-    /** Full file path to the HTML (or empty string for text-only) */
+    /** File path relative to the GAP root (empty for text-only) */
     filePath: string;
     /** Anchor ID (e.g. "X858ADA3B7A684421") */
     anchor: string;
@@ -30,7 +30,7 @@ export interface HelpEntry {
     isTextOnly: boolean;
     /** Entry type (entry[3] in GAP): "S"=section, "C"=chapter, "F"=function, "I"=index. Empty for GapDocGAP. */
     type: string;
-    /** Raw text content (only for text-only entries) */
+    /** Cleaned text content (only for text-only entries) */
     textContent?: string;
 }
 

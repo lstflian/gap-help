@@ -5,3 +5,4 @@ images/*.gif
 .vscode/**
 *.vsix
 package-lock.json
+testScripts

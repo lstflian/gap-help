@@ -2,7 +2,7 @@
     "name": "gap-help",
     "displayName": "GAP Help",
     "description": "Search and read GAP documentation directly in VS Code, powered by the native GAP help system",
-    "version": "0.1.1",
+    "version": "0.3.0",
     "publisher": "flianlee",
     "license": "SEE LICENSE IN LICENSE",
     "icon": "icon/icon.png",
@@ -54,6 +54,11 @@
         "configuration": {
             "title": "GAP Help",
             "properties": {
+                "gap-help.gapPath": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "Path to GAP installation root (the folder containing `doc/` and `pkg/`).\n\nWindows example:\n`C:\\Program Files\\GAP-4.16.0\\runtime\\opt\\gap-4.16.0`\n\nLinux/Mac example:\n`/home/user/gap-4.16.0`"
+                },
                 "gap-help.searchMode": {
                     "type": "string",
                     "enum": [
@@ -70,6 +75,21 @@
                     ],
                     "default": "native",
                     "description": "Help page rendering style. Currently only 'native' (GAP original look) is available."
+                },
+                "gap-help.docAppearance": {
+                    "type": "string",
+                    "enum": [
+                        "system",
+                        "dark",
+                        "light"
+                    ],
+                    "default": "system",
+                    "description": "Appearance of GAP documentation pages: 'system' follows the VS Code theme, 'dark'/'light' force a mode for all manuals."
+                },
+                "gap-help.mathJax": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Render math in GAP documentation pages with MathJax. The [MathJax on/off] link inside the docs toggles this setting."
                 }
             }
         }
@@ -82,6 +102,5 @@
         "@types/node": "^18.0.0",
         "@types/vscode": "^1.105.0",
         "typescript": "^5.0.0"
-    },
-    "dependencies": {}
+    }
 }

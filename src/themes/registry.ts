@@ -12,7 +12,9 @@ export const STYLES: Record<string, {
         cspSource: string,
         navScript: string,
         toWebviewUri: (absPath: string) => string,
-        setFileState: (file: string, docDir: string) => void
+        setFileState: (file: string, docDir: string) => void,
+        docStyle?: string,
+        mathJax?: boolean
     ) => string | null;
     renderFile: (
         filePath: string,
@@ -20,7 +22,9 @@ export const STYLES: Record<string, {
         gapRoot: string,
         cspSource: string,
         navScript: string,
-        toWebviewUri: (absPath: string) => string
+        toWebviewUri: (absPath: string) => string,
+        docStyle?: string,
+        mathJax?: boolean
     ) => string | null;
 }> = {
     [native.STYLE_NAME]: native,

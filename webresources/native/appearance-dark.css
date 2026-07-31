@@ -1,0 +1,55 @@
+/* Fallback dark appearance for package manuals without their own dark.css.
+   Mirrors GAP's native dark.css colors so the forced appearance actually wins over the VS Code theme. */
+
+body {
+  background: #121212;
+  color: #c9d1d9;
+}
+
+a:link, a:visited, a:active {
+  color: #576cad;
+}
+
+a:hover {
+  background: #eee;
+  color: #000;
+  text-decoration: underline;
+}
+
+pre {
+  background: #0d1117;
+  color: #c9d1d9;
+  border-color: #30363d;
+}
+
+code, tt {
+  color: #c9d1d9;
+  background: transparent !important;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+table.example, div.example {
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+div.chlinktop, div.chlinkbot,
+div.chlinkprevnexttop, div.chlinkprevnextbot {
+  background: #22272e;
+  border-color: #3a414a;
+  color: #d7dde5;
+}
+
+div.func {
+  background: #161b22;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  border-radius: 3px;
+  padding: 4px 8px;
+}
+
+h1, h2, h3, h4, h5, .Heading {
+  color: #eee;
+}

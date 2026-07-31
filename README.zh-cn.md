@@ -1,7 +1,7 @@
 ﻿# GAP Help
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
-[![GAP](https://img.shields.io/badge/GAP-4.13.0+-green)](https://www.gap-system.org/)
+[![GAP](https://img.shields.io/badge/GAP-4.13.1+-green)](https://www.gap-system.org/)
 
 [English](README.md) | 简体中文
 
@@ -13,34 +13,37 @@
 
 ## 前置条件
 
-本扩展配合 Windows 版 GAP（.exe 安装程序）使用，且要求 GAP 已添加到系统 `PATH`。
+安装扩展后，打开 VS Code 设置（`Ctrl+,`），搜索 `gap-help.gapPath`，填入 GAP 安装根目录（需包含 `doc/` 和 `pkg/` 子文件夹）。
 
-**1. 添加 GAP 到 `PATH`**
+- **Windows 示例**：`C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0`
+- **Linux/Mac 示例**：`/home/user/gap-4.16.0`
 
-以 GAP 4.16.0 为例，在 PowerShell 中执行（请将路径替换为实际安装路径）：
+> 内置了 GAP 4.13.1 / 4.14.0 / 4.15.0 / 4.16.0 的索引数据，以上版本设置路径后即可使用，无需额外操作。
+> 若使用其他版本，需要手动运行 `GAP: Rebuild Help Index` 重建索引（Windows 需将 GAP 添加到系统 PATH）。
+
+路径设置后即时生效，无需重启 VS Code。
+
+### Windows：手动重建需添加 GAP 到 PATH
+
+如果需要在 Windows 中手动重建索引数据，需要先将 GAP 添加到系统 PATH。以 GAP 4.16.0 为例，在 PowerShell 中执行（请将路径替换为实际安装路径）：
 
 ```powershell
 $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
 [Environment]::SetEnvironmentVariable('PATH', $userPath + ';C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0;C:\Program Files\GAP-4.16.0\runtime\bin', 'User')
 ```
 
-**2. 验证安装**
+重启终端后运行 `gap --version` 确认添加成功。
 
-重启终端后运行以下命令，确认 `gap` 已正确添加：
+## 主要功能说明
 
-```bash
-gap --version
-```
-
-## 功能说明
-
-- 扩展首次激活时自动生成帮助索引文件，后续可通过 `Ctrl+Shift+P` 输入 `GAP: Rebuild Help Index` 手动重建。
-
+- 内置 GAP 4.13.1~4.16.0 的索引数据，设置路径后即刻可用。
 - 支持两种搜索模式，可在设置或 QuickPick 搜索框中随时切换：
   - **prefix**：对应 GAP 中的 `?help`
   - **substring**：对应 GAP 中的 `??help`
-
+- 使用其他 GAP 版本时，通过 `Ctrl+Shift+P` 输入 `GAP: Rebuild Help Index` 手动重建索引。
 - 搜索结果在 Webview 面板中展示，支持页内链接跳转和 MathJax 数学公式渲染。
+- 文档外观可全局控制：`system` 跟随 VS Code 主题，`dark` / `light` 对所有文档强制生效，也可通过文档内的 `[Style]` 链接调整。
+- MathJax 支持全局开关，与文档内 `[MathJax on/off]` 链接双向同步，切换后保持浏览位置。
 
 ## 功能演示
 
@@ -73,6 +76,16 @@ gap --version
 右键菜单可直接打开 GAP Reference Manual，Webview 面板内点击链接可在页面间跳转。
 
 <img src="images/GAPRef.gif" alt="参考手册演示" width="800" />
+
+## 设置项
+
+| 设置项 | 默认值 | 说明 |
+|---|---|---|
+| `gap-help.gapPath` | （空） | GAP 安装根目录（包含 `doc/` 和 `pkg/` 的文件夹） |
+| `gap-help.searchMode` | `prefix` | 搜索模式：`prefix` 对应 `?help`，`substring` 对应 `??help` |
+| `gap-help.helpStyle` | `native` | 页面渲染风格，目前仅 `native`（GAP 原生外观） |
+| `gap-help.docAppearance` | `system` | 文档外观：`system` 跟随 VS Code 主题，`dark` / `light` 对所有文档强制生效 |
+| `gap-help.mathJax` | `true` | 是否用 MathJax 渲染文档中的数学公式，与文档内 `[MathJax on/off]` 链接同步 |
 
 ## 开发
 

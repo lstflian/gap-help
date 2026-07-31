@@ -1,7 +1,7 @@
 # GAP Help
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
-[![GAP](https://img.shields.io/badge/GAP-4.13.0+-green)](https://www.gap-system.org/)
+[![GAP](https://img.shields.io/badge/GAP-4.13.1+-green)](https://www.gap-system.org/)
 
 English | [简体中文](README.zh-cn.md)
 
@@ -13,34 +13,47 @@ Supports word-selection lookup, real-time QuickPick search (matching the behavio
 
 ## Prerequisites
 
-This extension works with GAP for Windows (the .exe installer) and requires GAP to be in your system `PATH`.
+After installing, open VS Code settings (`Ctrl+,`), search for `gap-help.gapPath`, and enter the path to your GAP installation root (the folder containing `doc/` and `pkg/`).
 
-**1. Add GAP to `PATH`**
+- **Windows example**: `C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0`
+- **Linux/Mac example**: `/home/user/gap-4.16.0`
 
-Using GAP 4.16.0 as an example, run the following in PowerShell (replace the path with your actual installation path):
+> Prebuilt index data is included for GAP 4.13.1 / 4.14.0 / 4.15.0 / 4.16.0. Just set the path and the extension is ready to use.
+> For other versions, run `GAP: Rebuild Help Index` to manually build the index (Windows users need GAP in their system PATH).
+
+The path takes effect immediately, no restart needed.
+
+### Windows: add GAP to PATH for manual rebuild
+
+To manually rebuild the index on Windows, make sure GAP is added to the system PATH first. Using GAP 4.16.0 as an example, run the following in PowerShell (replace with your actual installation path):
 
 ```powershell
 $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
 [Environment]::SetEnvironmentVariable('PATH', $userPath + ';C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0;C:\Program Files\GAP-4.16.0\runtime\bin', 'User')
 ```
 
-**2. Verify the installation**
-
-After restarting your terminal, run the following command to confirm `gap` is correctly added:
-
-```bash
-gap --version
-```
+Restart your terminal and run `gap --version` to verify.
 
 ## Features
 
-- On first activation, the extension automatically generates the help index. You can manually rebuild it later by pressing `Ctrl+Shift+P` and typing `GAP: Rebuild Help Index`.
-
+- Prebuilt index data for GAP 4.13.1~4.16.0: ready to use once the path is set.
 - Two search modes, switchable in settings or from the QuickPick search box:
   - **prefix**: equivalent to GAP's `?help`
   - **substring**: equivalent to GAP's `??help`
-
+- For other GAP versions, manually rebuild by pressing `Ctrl+Shift+P` and typing `GAP: Rebuild Help Index`.
 - Search results are displayed in a webview panel with support for in-page link navigation and MathJax math rendering.
+- Document appearance is globally controllable: `system` follows the VS Code theme, `dark` / `light` force a mode for all manuals, and the `[Style]` link inside the docs adjusts it.
+- MathJax has a global switch, synced bidirectionally with the `[MathJax on/off]` link inside the docs, and toggling keeps your scroll position.
+
+## Settings
+
+| Setting | Default | Description |
+|---|---|---|
+| `gap-help.gapPath` | (empty) | GAP installation root (the folder containing `doc/` and `pkg/`) |
+| `gap-help.searchMode` | `prefix` | Search mode: `prefix` matches `?help` (from word start), `substring` matches `??help` (anywhere) |
+| `gap-help.helpStyle` | `native` | Page rendering style. Currently only `native` (GAP's original look) |
+| `gap-help.docAppearance` | `system` | Document appearance: `system` follows the VS Code theme, `dark` / `light` force a mode for all manuals |
+| `gap-help.mathJax` | `true` | Render math with MathJax. Synced with the `[MathJax on/off]` link inside the docs |
 
 ## Demonstration
 
