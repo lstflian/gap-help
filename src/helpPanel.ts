@@ -39,7 +39,7 @@ function navigatePage(navFile: string, anchor: string): void {
 
     let newFile = path.resolve(currentDocDir, navFile);
     if (!fs.existsSync(newFile)) {
-        vscode.window.showWarningMessage(`GAP Help: File not found — ${newFile}`);
+        vscode.window.showWarningMessage(`GAP Help: File not found: ${newFile}`);
         return;
     }
 

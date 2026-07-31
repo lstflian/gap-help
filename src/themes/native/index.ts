@@ -63,7 +63,7 @@ export const native = {
         // HTML doc
         const file = path.join(gapRoot, entry.filePath.replace(/#.*/, ''));
         if (!fs.existsSync(file)) {
-            vscode.window.showErrorMessage(`GAP Help: File not found — ${file}`);
+            vscode.window.showErrorMessage(`GAP Help: File not found: ${file}`);
             return null;
         }
         const docDir = path.dirname(file);
@@ -93,7 +93,7 @@ function readFile(name: string): string {
     try {
         return fs.readFileSync(path.join(RES_DIR, name), 'utf-8');
     } catch (e: any) {
-        console.warn(`GAP Help: Failed to load ${name} — ${e.message}`);
+        console.warn(`GAP Help: Failed to load ${name}: ${e.message}`);
         return '';
     }
 }
