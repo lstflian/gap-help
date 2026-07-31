@@ -45,6 +45,16 @@ $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
 - 文档外观可全局控制：`system` 跟随 VS Code 主题，`dark` / `light` 对所有文档强制生效，也可通过文档内的 `[Style]` 链接调整。
 - MathJax 支持全局开关，与文档内 `[MathJax on/off]` 链接双向同步，切换后保持浏览位置。
 
+## 设置项
+
+| 设置项 | 默认值 | 说明 |
+|---|---|---|
+| `gap-help.gapPath` | （空） | GAP 安装根目录（包含 `doc/` 和 `pkg/` 的文件夹） |
+| `gap-help.searchMode` | `prefix` | 搜索模式：`prefix` 对应 `?help`，`substring` 对应 `??help` |
+| `gap-help.helpStyle` | `native` | 页面渲染风格，目前仅 `native`（GAP 原生外观） |
+| `gap-help.docAppearance` | `system` | 文档外观：`system` 跟随 VS Code 主题，`dark` / `light` 对所有文档强制生效 |
+| `gap-help.mathJax` | `true` | 是否用 MathJax 渲染文档中的数学公式，与文档内 `[MathJax on/off]` 链接同步 |
+
 ## 功能演示
 
 以下演示了本扩展的主要功能：划词查询、QuickPick 搜索、书籍筛选、右键菜单打开 GAP Reference Manual 以及 Webview 面板内的链接跳转。
@@ -76,16 +86,6 @@ $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
 右键菜单可直接打开 GAP Reference Manual，Webview 面板内点击链接可在页面间跳转。
 
 <img src="images/GAPRef.gif" alt="参考手册演示" width="800" />
-
-## 设置项
-
-| 设置项 | 默认值 | 说明 |
-|---|---|---|
-| `gap-help.gapPath` | （空） | GAP 安装根目录（包含 `doc/` 和 `pkg/` 的文件夹） |
-| `gap-help.searchMode` | `prefix` | 搜索模式：`prefix` 对应 `?help`，`substring` 对应 `??help` |
-| `gap-help.helpStyle` | `native` | 页面渲染风格，目前仅 `native`（GAP 原生外观） |
-| `gap-help.docAppearance` | `system` | 文档外观：`system` 跟随 VS Code 主题，`dark` / `light` 对所有文档强制生效 |
-| `gap-help.mathJax` | `true` | 是否用 MathJax 渲染文档中的数学公式，与文档内 `[MathJax on/off]` 链接同步 |
 
 ## 开发
 
