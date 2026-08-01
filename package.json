@@ -2,7 +2,7 @@
     "name": "gap-help",
     "displayName": "GAP Help",
     "description": "Search and read GAP documentation directly in VS Code, powered by the native GAP help system",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "publisher": "flianlee",
     "license": "SEE LICENSE IN LICENSE",
     "icon": "icon/icon.png",
@@ -96,7 +96,8 @@
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
-        "compile": "tsc -p ./"
+        "compile": "tsc -p ./",
+        "test": "npm run compile && node test/run-all.js"
     },
     "devDependencies": {
         "@types/node": "^18.0.0",

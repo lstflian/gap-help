@@ -15,17 +15,19 @@ Supports word-selection lookup, real-time QuickPick search (matching the behavio
 
 After installing, open VS Code settings (`Ctrl+,`), search for `gap-help.gapPath`, and enter the path to your GAP installation root (the folder containing `doc/` and `pkg/`).
 
-- **Windows example**: `C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0`
-- **Linux/Mac example**: `/home/user/gap-4.16.0`
+### Path examples
 
-> Prebuilt index data is included for GAP 4.13.1 / 4.14.0 / 4.15.0 / 4.16.0. Just set the path and the extension is ready to use.
+- **GAP installed via the `.exe` installer**: `C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0`
+- **GAP built from source**: `/home/user/gap-4.16.0`
+
+> The extension includes prebuilt index data for GAP 4.13.1 / 4.14.0 / 4.15.0 / 4.16.0. Just set the path and it is ready to use.
 > For other versions, run `GAP: Rebuild Help Index` to manually build the index (Windows users need GAP in their system PATH).
 
 The path takes effect immediately, no restart needed.
 
-### Windows: add GAP to PATH for manual rebuild
+### Windows: add GAP to the system PATH
 
-To manually rebuild the index on Windows, make sure GAP is added to the system PATH first. Using GAP 4.16.0 as an example, run the following in PowerShell (replace with your actual installation path):
+Rebuilding the index needs the `gap` command. Using GAP 4.16.0 as an example, run the following in PowerShell (replace with your actual installation path):
 
 ```powershell
 $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
@@ -94,6 +96,12 @@ First install dependencies and compile the TypeScript sources:
 ```bash
 npm install
 npm run compile
+```
+
+Run the tests:
+
+```bash
+npm test
 ```
 
 Then press `F5` to launch debugging.

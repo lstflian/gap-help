@@ -1,3 +1,13 @@
+## 0.3.1
+
+**Added**
+
+1. Lightweight unit tests for the search engine, link parsing, and chooser logic (`npm test`)
+
+**Fixed**
+
+1. Style chooser radio state was not restored when reopening the style dialog after a change
+
 ## 0.3.0
 
 **Added**

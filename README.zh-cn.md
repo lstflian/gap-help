@@ -15,17 +15,19 @@
 
 安装扩展后，打开 VS Code 设置（`Ctrl+,`），搜索 `gap-help.gapPath`，填入 GAP 安装根目录（需包含 `doc/` 和 `pkg/` 子文件夹）。
 
-- **Windows 示例**：`C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0`
-- **Linux/Mac 示例**：`/home/user/gap-4.16.0`
+### 路径填写示例
 
-> 内置了 GAP 4.13.1 / 4.14.0 / 4.15.0 / 4.16.0 的索引数据，以上版本设置路径后即可使用，无需额外操作。
+- **通过 `.exe` 安装器安装的 GAP**：`C:\Program Files\GAP-4.16.0\runtime\opt\gap-4.16.0`
+- **通过源码编译安装的 GAP**：`/home/user/gap-4.16.0`
+
+> 扩展内置了 GAP 4.13.1 / 4.14.0 / 4.15.0 / 4.16.0 的索引数据，以上版本设置路径后即可使用，无需额外操作。
 > 若使用其他版本，需要手动运行 `GAP: Rebuild Help Index` 重建索引（Windows 需将 GAP 添加到系统 PATH）。
 
 路径设置后即时生效，无需重启 VS Code。
 
-### Windows：手动重建需添加 GAP 到 PATH
+### Windows：添加 GAP 到系统 PATH
 
-如果需要在 Windows 中手动重建索引数据，需要先将 GAP 添加到系统 PATH。以 GAP 4.16.0 为例，在 PowerShell 中执行（请将路径替换为实际安装路径）：
+重建索引需要 `gap` 命令可用。以 GAP 4.16.0 为例，在 PowerShell 中执行（请将路径替换为实际安装路径）：
 
 ```powershell
 $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
@@ -36,7 +38,7 @@ $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
 
 ## 主要功能说明
 
-- 内置 GAP 4.13.1~4.16.0 的索引数据，设置路径后即刻可用。
+- 扩展内置 GAP 4.13.1~4.16.0 的索引数据，设置路径后即刻可用。
 - 支持两种搜索模式，可在设置或 QuickPick 搜索框中随时切换：
   - **prefix**：对应 GAP 中的 `?help`
   - **substring**：对应 GAP 中的 `??help`
@@ -94,6 +96,12 @@ $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
 ```bash
 npm install
 npm run compile
+```
+
+运行测试：
+
+```bash
+npm test
 ```
 
 之后按 `F5` 即可启动调试。
