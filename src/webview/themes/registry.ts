@@ -2,7 +2,7 @@
  * Theme registry.
  */
 import { native } from './native';
-import { HelpEntry } from '../indexData';
+import { HelpEntry } from '../../indexData';
 
 export const STYLES: Record<string, {
     STYLE_NAME: string;

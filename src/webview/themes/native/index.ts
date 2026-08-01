@@ -6,7 +6,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
-import { HelpEntry } from '../../indexData';
+import { HelpEntry } from '../../../indexData';
 import { buildCSP } from '../csp';
 
 
@@ -69,7 +69,7 @@ function buildAppearanceTag(
     const parts = docStyle.split(',').map(s => s.trim()).filter(Boolean);
     const isDark = parts.includes('dark');
     const isLight = parts.includes('light');
-    const resDir = path.join(__dirname, '..', '..', '..', 'webresources', 'native');
+    const resDir = RES_DIR;
 
     let baseTag = '';
     if (hasManualCSS) {
@@ -171,7 +171,9 @@ export const native = {
 
 // Internal helpers
 
-const RES_DIR = path.join(__dirname, '..', '..', '..', 'webresources', 'native');
+// Compiled location is out/webview/themes/native.
+// Go up four levels to the extension root.
+const RES_DIR = path.join(__dirname, '..', '..', '..', '..', 'webresources', 'native');
 const HELP_SUPPLEMENT_CSS = readFile('help-supplement.css');
 
 function readFile(name: string): string {
