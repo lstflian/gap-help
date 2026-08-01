@@ -1,7 +1,6 @@
 /**
  * Link parsing for help-nav.js navigation.
  * These functions mirror the click handler in help-nav.js.
- * Tests can run the same logic in plain Node.
  */
 
 export interface ParsedHref {
@@ -36,7 +35,7 @@ export function parseHref(raw: string): ParsedHref | null {
         const m = query.match(/(?:^|&)GAPDocStyle=([^&]*)/);
         if (m) {
             try { style = decodeURIComponent(m[1]); }
-            catch (e) { style = m[1]; }  // Bad percent sequence.
+            catch (e) { style = m[1]; }  // malformed URI sequence.
         }
     }
     return { filePart, anchor, style };

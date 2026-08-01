@@ -1,6 +1,6 @@
 /**
  * Native theme. 
- * Matches GAP's original browser look and renders text only pages, pages without files, and HTML pages.
+ * Matches GAP's original browser look and renders text-only pages, pages without files, and HTML pages.
  */
 
 import * as vscode from 'vscode';
@@ -56,7 +56,7 @@ function buildDocStyleTags(docDir: string, docStyle: string, toWebviewUri: (absP
 /**
  * Injects the stylesheet for dark or light mode.
  * Docs with manual.css use their own dark.css or the reference manual's as fallback.
- * Docs without manual.css use the built in appearance css.
+ * Docs without manual.css use the built-in appearance css.
  * Dark mode also gets dark-codeblock.css.
  */
 function buildAppearanceTag(

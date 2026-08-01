@@ -3,7 +3,6 @@
  * The session is an explicit argument.
  * All state lives in the HelpPanelSession instance.
  * There is no module level mutable state.
- * helpPanel.ts owns the panel and the message routing.
  * This module owns navigation and the style values.
  */
 
@@ -56,12 +55,12 @@ function applyStyleFromChooser(styleValue: string): string {
     return [resolved, ...extras].join(',');
 }
 
-/** Full style value for rendering. */
-function renderStyleValue(): string {
+/** The style value for rendering. */
+export function renderStyleValue(): string {
     return buildRenderStyleValue(resolveAppearance(), getDocStyles());
 }
 
-/** Style value for the chooser form. */
+/** The style value for the chooser form. */
 function chooserStyleValue(): string {
     return buildChooserStyleValue(getDocAppearance(), getDocStyles());
 }
@@ -75,7 +74,7 @@ export function navigatePage(s: HelpPanelSession, navFile: string, anchor: strin
         styleValue = applyStyleFromChooser(docStyle);
     }
 
-    // Support relative links and root absolute links like /pkg/
+    // Support relative links and root relative links like /pkg/
     const newFile = navFile.startsWith('/')
         ? path.join(s.rootDir, navFile)
         : path.resolve(s.currentDocDir, navFile);

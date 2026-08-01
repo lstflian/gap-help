@@ -1,6 +1,5 @@
 /* Fallback light appearance for package manuals without their own dark.css.
-   Hard-coded colors (not --vscode-* vars) so a forced light look actually
-   wins even when the VS Code theme is dark. */
+   Hard-coded colors (not --vscode-* vars) so the forced light appearance actually wins even when the VS Code theme is dark. */
 
 body {
   background: #ffffff;

@@ -134,7 +134,7 @@ var vsc = acquireVsCodeApi();
             var m = query.match(/(?:^|&)GAPDocStyle=([^&]*)/);
             if (m) {
                 try { style = decodeURIComponent(m[1]); }
-                catch (e) { style = m[1]; }  // malformed % sequence
+                catch (e) { style = m[1]; }  // malformed URI sequence
             }
         }
 

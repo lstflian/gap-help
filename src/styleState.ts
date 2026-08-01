@@ -33,7 +33,7 @@ export function getDocAppearance(): string {
     return (cfg.get<string>('docAppearance') || 'system').trim();
 }
 
-/** True if the active VS Code theme is dark or high contrast. */
+/** True if the theme kind is Dark or HighContrast. */
 export function isVscodeThemeDark(): boolean {
     const kind = vscode.window.activeColorTheme.kind;
     return kind === vscode.ColorThemeKind.Dark || kind === vscode.ColorThemeKind.HighContrast;

@@ -251,9 +251,11 @@ function registerCommands(ctx: vscode.ExtensionContext, dataDir: string, metaFil
     // Open GAP Reference Manual 
     ctx.subscriptions.push(vscode.commands.registerCommand('gap-help.openReference', () => {
         if (!checkGapPath()) return;
-        // Always open the non-MathJax page: _mj pages ship MathJax v2 which
-        // would double-load against the v3 the extension injects (and it
-        // would ignore the mathJax setting). The extension handles math.
+        // Always open the non-MathJax page.
+        // The _mj pages ship MathJax v2.
+        // It would load a second copy alongside the v3 we inject.
+        // It would also ignore the mathJax setting.
+        // The extension handles math.
         const plain = path.join(gapRoot, 'doc', 'ref', 'chap0.html');
         const file = plain;
         if (!fs.existsSync(file)) {

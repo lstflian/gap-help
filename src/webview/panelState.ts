@@ -1,13 +1,9 @@
 /**
  * HelpPanelSession holds the full state of one webview panel.
  * It is a plain state container with no logic.
- * Navigation and rendering live in navigation.ts and helpPanel.ts.
  * Each session keeps its own state.
  * The reset method only clears this instance.
  * Old panels cannot touch a newer session.
- * helpPanel.ts owns the module level session pointer.
- * Message callbacks read it each time.
- * They never capture a local instance.
  */
 
 import * as vscode from 'vscode';
@@ -39,7 +35,7 @@ export class HelpPanelSession {
         this.currentDocDir = docDir;
     }
 
-    /** Clear the scroll position on a cross page navigation. */
+    /** Clear the scroll position on navigation to another page. */
     markPageChanged(): void {
         this.lastScrollY = undefined;
     }

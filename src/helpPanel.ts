@@ -3,9 +3,6 @@
  * Creates the webview panel.
  * Owns the module level session pointer.
  * Routes webview messages.
- * navigation.ts owns navigatePage and refreshCurrentPage.
- * panelState.ts owns the HelpPanelSession class.
- * themes/registry.ts renders the pages.
  * Message callbacks read the current session each time.
  * They never capture a local instance.
  * The dispose callback only resets its own instance.
@@ -15,26 +12,17 @@
 import * as vscode from 'vscode';
 import { HelpEntry } from './indexData';
 import { STYLES } from './webview/themes/registry';
-import {
-    getDocStyles, getMathJax, setMathJax, resolveAppearance, getWebResourcesDir,
-} from './styleState';
+import { getMathJax, setMathJax, getWebResourcesDir } from './styleState';
 import { buildNavScript } from './webview/navScript';
-import { buildRenderStyleValue } from './webview/chooser';
-import { navigatePage as navigateImpl, refreshCurrentPage as refreshImpl } from './webview/navigation';
+import { navigatePage as navigateImpl, refreshCurrentPage as refreshImpl, renderStyleValue } from './webview/navigation';
 import { HelpPanelSession } from './webview/panelState';
 
 // The active session or null.
 // This is the only module level state.
 let session: HelpPanelSession | null = null;
 
-/** Full style value for rendering: system resolved against the theme. */
-function renderStyleValue(): string {
-    return buildRenderStyleValue(resolveAppearance(), getDocStyles());
-}
-
 /**
  * Re-render the current page when the MathJax setting changes.
- * No argument export used by extension.ts and the tests.
  * It forwards to the current session.
  */
 export function refreshCurrentPage(): void {
@@ -78,7 +66,7 @@ export function showHelpPanel(entry: HelpEntry, gapRoot: string): void {
             s.lastScrollY = msg.y;
         } else if (msg.type === 'mathjax') {
             // Save the scroll position, then flip the switch.
-            // The config change listener in extension.ts re-renders.
+            // The setting change triggers a re-render.
             s.pendingScrollY = typeof msg.scrollY === 'number' ? msg.scrollY : undefined;
             setMathJax(msg.on);
         }

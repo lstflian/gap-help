@@ -2,7 +2,7 @@
  * This file does the following:
  * 
  * 1. Provides a live search QuickPick for GAP help entries.
- * 2. Filters results by book through a toolbar button.
+ * 2. Filters results by book through a button.
  */
 
 import * as vscode from 'vscode';
@@ -10,7 +10,7 @@ import { HelpEntry } from './indexData';
 
 interface PickerItem extends vscode.QuickPickItem { entry: HelpEntry }
 
-/** Show a filter button in the input bar. */
+/** Show a filter button in the QuickPick. */
 const filterOffBtn: vscode.QuickInputButton = {
     iconPath: new vscode.ThemeIcon('filter'),
     tooltip: 'Filter by book',
