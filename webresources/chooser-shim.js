@@ -20,9 +20,29 @@
   document.addEventListener("DOMContentLoaded", function() {
     var want = (STYLE_PLACEHOLDER || "").split(",");
     var chform = document.forms[0].elements;
+    // Group the radios by name.
+    // A group with a matched value shows that value.
+    // A group without a matched value shows its empty default value.
+    var groups = {};
     for (var i = 0; i < chform.length; i++) {
       if (chform[i].type === "radio") {
-        chform[i].checked = want.indexOf(chform[i].value) > -1;
+        var name = chform[i].name;
+        if (!groups[name]) groups[name] = [];
+        groups[name].push(chform[i]);
+      }
+    }
+    for (var g in groups) {
+      var group = groups[g];
+      var hasMatch = false;
+      for (var k = 0; k < group.length; k++) {
+        if (want.indexOf(group[k].value) > -1) { hasMatch = true; break; }
+      }
+      for (var j = 0; j < group.length; j++) {
+        if (hasMatch) {
+          group[j].checked = want.indexOf(group[j].value) > -1;
+        } else {
+          group[j].checked = group[j].value === "";
+        }
       }
     }
     // chooser.html calls initform and f before DOMContentLoaded.
