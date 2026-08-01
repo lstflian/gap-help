@@ -6,3 +6,4 @@ images/*.gif
 *.vsix
 package-lock.json
 testScripts
+test
