@@ -190,8 +190,10 @@ async function doRebuild(context: vscode.ExtensionContext, dataDir: string, meta
         throw new Error('Cannot find gap executable. Make sure "gap-help.gapPath" points to the correct GAP root folder.');
     }
 
-    // Windows: use PATH. Linux/Mac: use full path.
-    const gapCmd = process.platform === 'win32' ? 'gap' : `"${gapBin}"`;
+    // Windows: use PATH ('gap' resolves via cmd). Linux/Mac: use the found path;
+    const gapCmd = process.platform === 'win32'
+        ? 'gap'
+        : gapBin.endsWith('.sh') ? `sh "${gapBin}"` : `"${gapBin}"`;
 
     const scripts = path.join(context.extensionPath, 'scripts');
     const exp = path.join(scripts, 'export.g');
@@ -376,14 +378,17 @@ function getBuiltinVersions(context: vscode.ExtensionContext): string[] {
 /**
  * Locate the gap executable.
  * Windows: checks PATH.
- * Linux/Mac: looks under gapRoot.
+ * Linux/Mac: looks for <root>/gap, then <root>/bin/gap.sh, then PATH.
  */
 function findGapBinary(gapRoot: string): string | null {
     if (process.platform === 'win32') {
         return gapInPath() ? 'gap' : null;
     }
-    const p = path.join(gapRoot, 'gap');
-    return fs.existsSync(p) ? p : null;
+    const direct = path.join(gapRoot, 'gap');
+    if (fs.existsSync(direct)) return direct;
+    const script = path.join(gapRoot, 'bin', 'gap.sh');
+    if (fs.existsSync(script)) return script;
+    return gapInPath() ? 'gap' : null;
 }
 
 /** Check that `gap` is runnable from PATH (Windows only). */
