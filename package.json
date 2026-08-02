@@ -57,7 +57,7 @@
                 "gap-help.gapPath": {
                     "type": "string",
                     "default": "",
-                    "markdownDescription": "Path to GAP installation root (the folder containing `doc/` and `pkg/`).\n\nWindows example:\n`C:\\Program Files\\GAP-4.16.0\\runtime\\opt\\gap-4.16.0`\n\nLinux/Mac example:\n`/home/user/gap-4.16.0`"
+                    "markdownDescription": "Path to GAP installation root (the folder containing `doc/` and `pkg/`). Examples:\n\nGAP installed via the `.exe` installer: `C:\\Program Files\\GAP-4.16.0\\runtime\\opt\\gap-4.16.0`\n\nGAP built from source: `/home/user/gap-4.16.0`"
                 },
                 "gap-help.searchMode": {
                     "type": "string",

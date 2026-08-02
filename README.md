@@ -11,7 +11,7 @@ Supports word-selection lookup, real-time QuickPick search (matching the behavio
 
 > GAP is a system for computational discrete algebra, with particular emphasis on computational group theory, and is widely used in mathematical research. GAP comes with comprehensive built-in documentation. This extension builds on GAP's native help system, aiming to help GAP users learn and work with GAP more conveniently. For more information, see the [GAP official website](https://www.gap-system.org/).
 
-## Prerequisites
+## Usage
 
 After installing, open VS Code settings (`Ctrl+,`), search for `gap-help.gapPath`, and enter the path to your GAP installation root (the folder containing `doc/` and `pkg/`).
 
