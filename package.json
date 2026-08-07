@@ -5,6 +5,7 @@
     "version": "0.3.2",
     "publisher": "flianlee",
     "license": "SEE LICENSE IN LICENSE",
+    "author": "Songtai Li",
     "icon": "icon/icon.png",
     "categories": ["Education"],
     "keywords": ["gap", "algebra", "group theory", "help", "documentation", "mathematics"],
