@@ -1,3 +1,9 @@
+## 0.3.2
+
+**Removed**
+
+1. The redundant "Loaded the previous index" notification on startup when reusing the cached index
+
 ## 0.3.1
 
 **Added**

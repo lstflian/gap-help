@@ -2,7 +2,7 @@
     "name": "gap-help",
     "displayName": "GAP Help",
     "description": "Search and read GAP documentation directly in VS Code, powered by the native GAP help system",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "publisher": "flianlee",
     "license": "SEE LICENSE IN LICENSE",
     "icon": "icon/icon.png",
