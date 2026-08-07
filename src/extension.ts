@@ -111,11 +111,6 @@ async function initializeHelp(context: vscode.ExtensionContext, dataDir: string,
                     vscode.window.showErrorMessage(`GAP Help: Failed to load help index: ${e.message}`);
                 }
             }
-            if (allEntries.length) {
-                vscode.window.showInformationMessage(
-                    `GAP Help: Loaded the previous index for GAP version "${userVersion || path.basename(gapRoot)}".`
-                );
-            }
             return;
         }
 
