@@ -388,7 +388,7 @@ function findGapBinary(gapRoot: string): string | null {
     return gapInPath() ? 'gap' : null;
 }
 
-/** Check that `gap` is runnable from PATH (Windows only). */
+/** Check that `gap` is runnable from PATH. */
 function gapInPath(): boolean {
     try {
         cp.execSync('gap --version', { encoding: 'utf-8', timeout: 5000 });
